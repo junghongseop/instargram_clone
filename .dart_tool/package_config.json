@@ -62,6 +62,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "get",
+      "rootUri": "file:///C:/Users/sub/AppData/Local/Pub/Cache/hosted/pub.dev/get-4.6.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "lints",
       "rootUri": "file:///C:/Users/sub/AppData/Local/Pub/Cache/hosted/pub.dev/lints-2.1.1",
       "packageUri": "lib/",
@@ -146,13 +152,13 @@
       "languageVersion": "3.1"
     },
     {
-      "name": "soldout",
+      "name": "instargram",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-01-01T05:47:24.125101Z",
+  "generated": "2024-01-01T05:54:21.752816Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }
