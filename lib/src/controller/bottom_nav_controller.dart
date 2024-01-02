@@ -25,19 +25,18 @@ class BottomNavController extends GetxController {
   void _changePage(int value, {bool hasGesture = true}) {
     pageIndex(value);
     if (!hasGesture) return;
-    bottomHistory.add(value);
-    print(bottomHistory);
+    if (bottomHistory.last != value) {
+      bottomHistory.add(value);
+    }
   }
 
   Future<bool> willPopAction() async {
     if (bottomHistory.length == 1) {
-      print('exit!');
       return true;
     } else {
       bottomHistory.removeLast();
       var index = bottomHistory.last;
       changeBottomNav(index, hasGesture: false);
-      print(bottomHistory);
       return false;
     }
   }
