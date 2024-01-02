@@ -10,9 +10,29 @@ class App extends GetView<BottomNavController> {
   Widget build(BuildContext context) {
     return Obx(
       () => WillPopScope(
+        onWillPop: controller.willPopAction,
         child: Scaffold(
           appBar: AppBar(),
-          body: Container(),
+          body: IndexedStack(
+            index: controller.pageIndex.value,
+            children: [
+              Container(
+                child: Center(child: Text('HOME')),
+              ),
+              Container(
+                child: Center(child: Text('SEARCH')),
+              ),
+              Container(
+                child: Center(child: Text('UPLOAD')),
+              ),
+              Container(
+                child: Center(child: Text('ACTIVITY')),
+              ),
+              Container(
+                child: Center(child: Text('MYPAGE')),
+              ),
+            ],
+          ),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             showSelectedLabels: false,
@@ -54,9 +74,6 @@ class App extends GetView<BottomNavController> {
             ],
           ),
         ),
-        onWillPop: () async {
-          return false;
-        },
       ),
     );
   }
