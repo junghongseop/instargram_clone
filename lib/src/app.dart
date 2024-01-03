@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instargram/src/components/image_data.dart';
 import 'package:instargram/src/controller/bottom_nav_controller.dart';
+import 'package:instargram/src/pages/home.dart';
 
 class App extends GetView<BottomNavController> {
   const App({Key? key}) : super(key: key);
@@ -12,10 +13,10 @@ class App extends GetView<BottomNavController> {
       () => WillPopScope(
         onWillPop: controller.willPopAction,
         child: Scaffold(
-          appBar: AppBar(),
           body: IndexedStack(
             index: controller.pageIndex.value,
             children: [
+              const Home(),
               Container(
                 child: Center(child: Text('HOME')),
               ),
