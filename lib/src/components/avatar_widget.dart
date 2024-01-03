@@ -35,21 +35,25 @@ class AvatarWidget extends StatelessWidget {
         ),
         shape: BoxShape.circle,
       ),
-      child: Container(
-        padding: const EdgeInsets.all(2),
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(size!),
-          child: SizedBox(
-            width: size,
-            height: size,
-            child: CachedNetworkImage(
-              imageUrl: thumbPath,
-              fit: BoxFit.cover,
-            ),
+      child: type2Widget(),
+    );
+  }
+
+  Widget type2Widget() {
+    return Container(
+      padding: const EdgeInsets.all(2),
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.white,
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(size!),
+        child: SizedBox(
+          width: size,
+          height: size,
+          child: CachedNetworkImage(
+            imageUrl: thumbPath,
+            fit: BoxFit.cover,
           ),
         ),
       ),
@@ -62,6 +66,7 @@ class AvatarWidget extends StatelessWidget {
       case AvatarType.TYPE1:
         return type1Widget();
       case AvatarType.TYPE2:
+        return type2Widget();
       case AvatarType.TYPE3:
         return Container();
     }
