@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instargram/src/components/avatar_widget.dart';
 import 'package:instargram/src/components/image_data.dart';
+import 'package:instargram/src/components/post_widget.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class Home extends StatelessWidget {
           size: 70,
         ),
         Positioned(
-          right: 2,
+          right: 3,
           bottom: 0,
           child: Container(
             width: 25,
@@ -58,7 +59,9 @@ class Home extends StatelessWidget {
   }
 
   Widget _postList() {
-    return Container();
+    return Column(
+      children: List.generate(50, (index) => PostWidget()).toList(),
+    );
   }
 
   @override

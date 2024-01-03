@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 enum AvatarType { TYPE1, TYPE2, TYPE3 }
@@ -60,6 +59,21 @@ class AvatarWidget extends StatelessWidget {
     );
   }
 
+  Widget type3Widget() {
+    return Row(
+      children: [
+        type2Widget(),
+        Text(
+          nickname ?? '',
+          style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     switch (type) {
@@ -68,7 +82,7 @@ class AvatarWidget extends StatelessWidget {
       case AvatarType.TYPE2:
         return type2Widget();
       case AvatarType.TYPE3:
-        return Container();
+        return type3Widget();
     }
   }
 }
