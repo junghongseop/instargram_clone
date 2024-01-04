@@ -62,7 +62,7 @@ class AvatarWidget extends StatelessWidget {
   Widget type3Widget() {
     return Row(
       children: [
-        type2Widget(),
+        type1Widget(),
         Text(
           nickname ?? '',
           style: const TextStyle(
