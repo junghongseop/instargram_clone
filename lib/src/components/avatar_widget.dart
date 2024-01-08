@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+// ignore: constant_identifier_names
 enum AvatarType { TYPE1, TYPE2, TYPE3 }
 
 class AvatarWidget extends StatelessWidget {

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:instargram/src/components/message_popup.dart';
 import 'package:instargram/src/pages/upload.dart';
 
+// ignore: constant_identifier_names
 enum PageName { HOME, SEARCH, UPLOAD, ACTIVITY, MYPAGE }
 
 class BottomNavController extends GetxController {
