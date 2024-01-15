@@ -35,7 +35,7 @@ class _SearchFocusState extends State<SearchFocus> {
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: "검색",
-              contentPadding: EdgeInsets.only(right: 15, top: 7, bottom: 7),
+              contentPadding: EdgeInsets.only(left: 15, top: 7, bottom: 7),
               isDense: true,
             ),
           ),
