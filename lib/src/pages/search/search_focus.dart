@@ -9,7 +9,77 @@ class SearchFocus extends StatefulWidget {
   State<SearchFocus> createState() => _SearchFocusState();
 }
 
-class _SearchFocusState extends State<SearchFocus> {
+class _SearchFocusState extends State<SearchFocus>
+    with TickerProviderStateMixin {
+  late TabController tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    tabController = TabController(length: 5, vsync: this);
+  }
+
+  Widget _tabMenuOne(String menu) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Text(
+        menu,
+        style: const TextStyle(fontSize: 15, color: Colors.black),
+      ),
+    );
+  }
+
+  Widget _body() {
+    return TabBarView(
+      controller: tabController,
+      children: const [
+        Center(
+          child: Text('인기 페이지'),
+        ),
+        Center(
+          child: Text('계정 페이지'),
+        ),
+        Center(
+          child: Text('오디오 페이지'),
+        ),
+        Center(
+          child: Text('태그 페이지'),
+        ),
+        Center(
+          child: Text('장소 페이지'),
+        ),
+      ],
+    );
+  }
+
+  PreferredSize _tabMenu() {
+    return PreferredSize(
+      preferredSize: Size.fromHeight(AppBar().preferredSize.height),
+      child: Container(
+        height: 35,
+        width: Size.infinite.width,
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: Color(0xffe4e4e4),
+            ),
+          ),
+        ),
+        child: TabBar(
+          controller: tabController,
+          indicatorColor: Colors.black,
+          tabs: [
+            _tabMenuOne('인기'),
+            _tabMenuOne('계정'),
+            _tabMenuOne('오디오'),
+            _tabMenuOne('태그'),
+            _tabMenuOne('장소'),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,12 +110,9 @@ class _SearchFocusState extends State<SearchFocus> {
             ),
           ),
         ),
+        bottom: _tabMenu(),
       ),
-      body: const SafeArea(
-        child: Column(
-          children: [],
-        ),
-      ),
+      body: _body(),
     );
   }
 }
