@@ -37,7 +37,14 @@ class _SearchState extends State<Search> {
         Expanded(
           child: GestureDetector(
             onTap: () {
-              Get.to(SearchFocus());
+              //appbar를 누르면 SearchFocus페이지로 넘어감 bottom은 못 들고 옴
+              // Get.to(SearchFocus());
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SearchFocus(),
+                ),
+              );
             },
             child: Container(
               height: 34,

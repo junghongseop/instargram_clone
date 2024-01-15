@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:instargram/src/components/image_data.dart';
+import 'package:instargram/src/controller/bottom_nav_controller.dart';
 
 class SearchFocus extends StatefulWidget {
   const SearchFocus({Key? key}) : super(key: key);
@@ -86,7 +86,16 @@ class _SearchFocusState extends State<SearchFocus>
       appBar: AppBar(
         elevation: 0,
         leading: GestureDetector(
-          onTap: Get.back,
+          // Get.to(SearchFocus())를 사용했으면 정상 작동함
+          // onTap: Get.back,
+
+          // Get으로 willPopAction()을 불러올 때 사용함
+          // onTap: () {
+          //   Get.find<BottomNavController>().willPopAction();
+          // },
+          onTap: () {
+            BottomNavController.to.willPopAction();
+          },
           child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: ImageData(
