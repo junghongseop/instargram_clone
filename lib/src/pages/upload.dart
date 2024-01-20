@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:instargram/src/components/image_data.dart';
 
 class Upload extends StatefulWidget {
