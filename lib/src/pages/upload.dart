@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instargram/src/components/image_data.dart';
+import 'package:photo_manager/photo_manager.dart';
 
 class Upload extends StatefulWidget {
   const Upload({Key? key}) : super(key: key);
@@ -9,6 +10,46 @@ class Upload extends StatefulWidget {
 }
 
 class _UploadState extends State<Upload> {
+
+  var albums = <AssetPathEntity>[];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPhotos();
+  }
+
+  void _loadPhotos() async {
+    var result = await PhotoManager.requestPermissionExtend();
+
+    if (result.isAuth) {
+      albums = await PhotoManager.getAssetPathList(
+        type: RequestType.image,
+        filterOption: FilterOptionGroup(
+          imageOption: const FilterOption(
+            sizeConstraint: SizeConstraint(
+              maxHeight: 100,
+              minWidth: 100,
+            ),
+          ),
+          orders: [
+            const OrderOption(
+              type: OrderOptionType.createDate,
+              asc: false,
+            ),
+          ],
+        ),
+      );
+      _loadData();
+    } else {
+      // manage 권한 요청
+    }
+  }
+
+  void _loadData() {
+    print(albums.first.name);
+  }
+
   Widget _imagePreview() {
     var width = MediaQuery.of(context).size.width;
     return Container(
@@ -94,9 +135,9 @@ class _UploadState extends State<Upload> {
       ),
       itemCount: 100,
       itemBuilder: (BuildContext context, int index) {
-         return Container(
-           color: Colors.red,
-         );
+        return Container(
+          color: Colors.red,
+        );
       },
     );
   }
