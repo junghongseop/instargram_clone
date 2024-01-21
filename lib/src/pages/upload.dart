@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instargram/src/components/image_data.dart';
-import 'package:photo_manager/photo_manager.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 
 class Upload extends StatefulWidget {
   const Upload({Key? key}) : super(key: key);
@@ -10,8 +11,8 @@ class Upload extends StatefulWidget {
 }
 
 class _UploadState extends State<Upload> {
-
-  var albums = <AssetPathEntity>[];
+  final ImagePicker _picker = ImagePicker();
+  List<XFile> images = [];
 
   @override
   void initState() {
@@ -20,43 +21,23 @@ class _UploadState extends State<Upload> {
   }
 
   void _loadPhotos() async {
-    var result = await PhotoManager.requestPermissionExtend();
-
-    if (result.isAuth) {
-      albums = await PhotoManager.getAssetPathList(
-        type: RequestType.image,
-        filterOption: FilterOptionGroup(
-          imageOption: const FilterOption(
-            sizeConstraint: SizeConstraint(
-              maxHeight: 100,
-              minWidth: 100,
-            ),
-          ),
-          orders: [
-            const OrderOption(
-              type: OrderOptionType.createDate,
-              asc: false,
-            ),
-          ],
-        ),
-      );
-      _loadData();
-    } else {
-      // manage 권한 요청
+    final XFile? selectedImage = await _picker.pickImage(source: ImageSource.gallery);
+    if (selectedImage != null) {
+      setState(() {
+        images.add(selectedImage);
+      });
     }
-  }
-
-  void _loadData() {
-    print(albums.first.name);
   }
 
   Widget _imagePreview() {
     var width = MediaQuery.of(context).size.width;
-    return Container(
+    return images.isEmpty
+        ? Container(
       width: width,
       height: width,
       color: Colors.grey,
-    );
+    )
+        : Image.file(File(images.first.path));
   }
 
   Widget _header() {
@@ -133,11 +114,9 @@ class _UploadState extends State<Upload> {
         mainAxisSpacing: 1,
         crossAxisSpacing: 1,
       ),
-      itemCount: 100,
+      itemCount: images.length,
       itemBuilder: (BuildContext context, int index) {
-        return Container(
-          color: Colors.red,
-        );
+        return Image.file(File(images[index].path));
       },
     );
   }
