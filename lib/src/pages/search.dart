@@ -21,7 +21,6 @@ class _SearchState extends State<Search> {
     super.initState();
     for (var i = 0; i < 100; i++) {
       var grid = groupIndex.indexOf(min<int>(groupIndex)!);
-      ;
       var size = 1;
       if (grid != 1) {
         size = Random().nextInt(100) % 2 == 0 ? 1 : 2;

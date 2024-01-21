@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instargram/src/components/image_data.dart';
-import 'dart:io';
-import 'package:image_picker/image_picker.dart';
+import 'package:photo_manager/photo_manager.dart';
 
 class Upload extends StatefulWidget {
   const Upload({Key? key}) : super(key: key);
@@ -11,8 +10,8 @@ class Upload extends StatefulWidget {
 }
 
 class _UploadState extends State<Upload> {
-  final ImagePicker _picker = ImagePicker();
-  List<XFile> images = [];
+
+  var albums = <AssetPathEntity>[];
 
   @override
   void initState() {
@@ -21,23 +20,43 @@ class _UploadState extends State<Upload> {
   }
 
   void _loadPhotos() async {
-    final XFile? selectedImage = await _picker.pickImage(source: ImageSource.gallery);
-    if (selectedImage != null) {
-      setState(() {
-        images.add(selectedImage);
-      });
+    var result = await PhotoManager.requestPermissionExtend();
+
+    if (result.isAuth) {
+      albums = await PhotoManager.getAssetPathList(
+        type: RequestType.image,
+        filterOption: FilterOptionGroup(
+          imageOption: const FilterOption(
+            sizeConstraint: SizeConstraint(
+              maxHeight: 100,
+              minWidth: 100,
+            ),
+          ),
+          orders: [
+            const OrderOption(
+              type: OrderOptionType.createDate,
+              asc: false,
+            ),
+          ],
+        ),
+      );
+      _loadData();
+    } else {
+      // manage 권한 요청
     }
+  }
+
+  void _loadData() {
+    print(albums.first.name);
   }
 
   Widget _imagePreview() {
     var width = MediaQuery.of(context).size.width;
-    return images.isEmpty
-        ? Container(
+    return Container(
       width: width,
       height: width,
       color: Colors.grey,
-    )
-        : Image.file(File(images.first.path));
+    );
   }
 
   Widget _header() {
@@ -65,7 +84,7 @@ class _UploadState extends State<Upload> {
             children: [
               Container(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 decoration: BoxDecoration(
                   color: const Color(0xff808080),
                   borderRadius: BorderRadius.circular(30),
@@ -114,9 +133,11 @@ class _UploadState extends State<Upload> {
         mainAxisSpacing: 1,
         crossAxisSpacing: 1,
       ),
-      itemCount: images.length,
+      itemCount: 100,
       itemBuilder: (BuildContext context, int index) {
-        return Image.file(File(images[index].path));
+        return Container(
+          color: Colors.red,
+        );
       },
     );
   }
