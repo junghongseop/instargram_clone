@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instargram/src/components/image_data.dart';
-import 'package:photo_manager/photo_manager.dart';
+import 'package:photo_manager/photo_manager.dart'; 
 
 class Upload extends StatefulWidget {
   const Upload({Key? key}) : super(key: key);
@@ -47,7 +47,6 @@ class _UploadState extends State<Upload> {
   }
 
   void _loadData() {
-    print(albums.first.name);
   }
 
   Widget _imagePreview() {
