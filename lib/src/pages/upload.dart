@@ -57,7 +57,7 @@ class _UploadState extends State<Upload> {
   }
 
   Future<void> _pagingPhotos() async {
-    var photos = await albums.first.getAssetListPaged(page: 0, size: 30);
+    var photos = await albums.first.getAssetListPaged(0, 30);
     imageList.addAll(photos);
     selectedImage = imageList.first;
   }
@@ -183,7 +183,7 @@ class _UploadState extends State<Upload> {
   Widget _photoWidget(AssetEntity asset, int size,
       {required Widget Function(Uint8List) builder}) {
     return FutureBuilder(
-      future: asset.thumbnailDataWithSize(ThumbnailSize(size.toInt(), size.toInt())),
+      future: asset.thumbDataWithSize(size, size),
       builder: (_, AsyncSnapshot<Uint8List?> snapshot) {
         if (snapshot.hasData) {
           return builder(snapshot.data!);
