@@ -1,6 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:instargram/src/components/image_data.dart';
-import 'package:photo_manager/photo_manager.dart'; 
+import 'package:photo_manager/photo_manager.dart';
 
 class Upload extends StatefulWidget {
   const Upload({Key? key}) : super(key: key);
@@ -10,8 +12,10 @@ class Upload extends StatefulWidget {
 }
 
 class _UploadState extends State<Upload> {
-
   var albums = <AssetPathEntity>[];
+  var imageList = <AssetEntity>[];
+  var headerTitle = '';
+  AssetEntity? selectedImage;
 
   @override
   void initState() {
@@ -46,9 +50,19 @@ class _UploadState extends State<Upload> {
     }
   }
 
-  void _loadData() {
-
+  void _loadData() async {
+    headerTitle = albums.first.name;
+    await _pagingPhotos();
+    update();
   }
+
+  Future<void> _pagingPhotos() async {
+    var photos = await albums.first.getAssetListPaged(page: 0, size: 30);
+    imageList.addAll(photos);
+    selectedImage = imageList.first;
+  }
+
+  void update() => setState(() {});
 
   Widget _imagePreview() {
     var width = MediaQuery.of(context).size.width;
@@ -56,6 +70,18 @@ class _UploadState extends State<Upload> {
       width: width,
       height: width,
       color: Colors.grey,
+      child: selectedImage == null
+          ? Container()
+          : _photoWidget(
+              selectedImage!,
+              width.toInt(),
+              builder: (data) {
+                return Image.memory(
+                  data,
+                  fit: BoxFit.cover,
+                );
+              },
+            ),
     );
   }
 
@@ -65,18 +91,18 @@ class _UploadState extends State<Upload> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Padding(
-            padding: EdgeInsets.all(5.0),
+          Padding(
+            padding: const EdgeInsets.all(5.0),
             child: Row(
               children: [
                 Text(
-                  '갤러리',
-                  style: TextStyle(
+                  headerTitle,
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 18,
                   ),
                 ),
-                Icon(Icons.arrow_drop_down),
+                const Icon(Icons.arrow_drop_down),
               ],
             ),
           ),
@@ -84,7 +110,7 @@ class _UploadState extends State<Upload> {
             children: [
               Container(
                 padding:
-                const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 decoration: BoxDecoration(
                   color: const Color(0xff808080),
                   borderRadius: BorderRadius.circular(30),
@@ -133,11 +159,37 @@ class _UploadState extends State<Upload> {
         mainAxisSpacing: 1,
         crossAxisSpacing: 1,
       ),
-      itemCount: 100,
+      itemCount: imageList.length,
       itemBuilder: (BuildContext context, int index) {
-        return Container(
-          color: Colors.red,
-        );
+        return _photoWidget(imageList[index], 200, builder: (data) {
+          return GestureDetector(
+            onTap: () {
+              selectedImage = imageList[index];
+              update();
+            },
+            child: Opacity(
+              opacity: imageList[index] == selectedImage ? 0.3 : 1,
+              child: Image.memory(
+                data,
+                fit: BoxFit.cover,
+              ),
+            ),
+          );
+        });
+      },
+    );
+  }
+
+  Widget _photoWidget(AssetEntity asset, int size,
+      {required Widget Function(Uint8List) builder}) {
+    return FutureBuilder(
+      future: asset.thumbnailDataWithSize(ThumbnailSize(size.toInt(), size.toInt())),
+      builder: (_, AsyncSnapshot<Uint8List?> snapshot) {
+        if (snapshot.hasData) {
+          return builder(snapshot.data!);
+        } else {
+          return Container();
+        }
       },
     );
   }
