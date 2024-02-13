@@ -16,38 +16,39 @@ class _UploadState extends State<Upload> {
   @override
   void initState() {
     super.initState();
-    // _loadPhotos();
+    _loadPhotos();
   }
 
-  // void _loadPhotos() async {
-  //   var result = await PhotoManager.requestPermissionExtend();
-  //
-  //   if (result.isAuth) {
-  //     albums = await PhotoManager.getAssetPathList(
-  //       type: RequestType.image,
-  //       filterOption: FilterOptionGroup(
-  //         imageOption: const FilterOption(
-  //           sizeConstraint: SizeConstraint(
-  //             maxHeight: 100,
-  //             minWidth: 100,
-  //           ),
-  //         ),
-  //         orders: [
-  //           const OrderOption(
-  //             type: OrderOptionType.createDate,
-  //             asc: false,
-  //           ),
-  //         ],
-  //       ),
-  //     );
-  //     _loadData();
-  //   } else {
-  //     // manage 권한 요청
-  //   }
-  // }
-  //
-  // void _loadData() {
-  // }
+  void _loadPhotos() async {
+    var result = await PhotoManager.requestPermissionExtend();
+
+    if (result.isAuth) {
+      albums = await PhotoManager.getAssetPathList(
+        type: RequestType.image,
+        filterOption: FilterOptionGroup(
+          imageOption: const FilterOption(
+            sizeConstraint: SizeConstraint(
+              maxHeight: 100,
+              minWidth: 100,
+            ),
+          ),
+          orders: [
+            const OrderOption(
+              type: OrderOptionType.createDate,
+              asc: false,
+            ),
+          ],
+        ),
+      );
+      _loadData();
+    } else {
+      // manage 권한 요청
+    }
+  }
+
+  void _loadData() {
+
+  }
 
   Widget _imagePreview() {
     var width = MediaQuery.of(context).size.width;
