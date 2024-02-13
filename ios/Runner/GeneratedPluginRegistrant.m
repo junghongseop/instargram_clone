@@ -12,8 +12,8 @@
 @import path_provider_foundation;
 #endif
 
-#if __has_include(<photo_manager/PhotoManagerPlugin.h>)
-#import <photo_manager/PhotoManagerPlugin.h>
+#if __has_include(<photo_manager/ImageScannerPlugin.h>)
+#import <photo_manager/ImageScannerPlugin.h>
 #else
 @import photo_manager;
 #endif
@@ -28,7 +28,7 @@
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [PathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"PathProviderPlugin"]];
-  [PhotoManagerPlugin registerWithRegistrar:[registry registrarForPlugin:@"PhotoManagerPlugin"]];
+  [ImageScannerPlugin registerWithRegistrar:[registry registrarForPlugin:@"ImageScannerPlugin"]];
   [SqflitePlugin registerWithRegistrar:[registry registrarForPlugin:@"SqflitePlugin"]];
 }
 
