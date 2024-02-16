@@ -69,6 +69,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        centerTitle: false,
         title: ImageData(
           IconsPath.logo,
           width: 270,
