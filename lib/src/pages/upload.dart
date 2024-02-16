@@ -107,9 +107,7 @@ class _UploadState extends State<Upload> {
                       (MediaQuery.of(context).padding.top + 5),
                 ),
                 builder: (_) => SizedBox(
-                  height: albums.length > 10
-                      ? Size.infinite.height
-                      : albums.length * 60,
+                  height: MediaQuery.of(context).size.height/3,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
