@@ -32,6 +32,7 @@ class App extends GetView<BottomNavController> {
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.white,
             type: BottomNavigationBarType.fixed,
             showSelectedLabels: false,
             showUnselectedLabels: false,
