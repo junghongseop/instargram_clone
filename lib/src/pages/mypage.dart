@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instargram/src/components/avatar_widget.dart';
 import 'package:instargram/src/components/image_data.dart';
+import 'package:instargram/src/components/user_card.dart';
 
 class MyPage extends StatelessWidget {
   const MyPage({Key? key}) : super(key: key);
@@ -127,6 +128,52 @@ class MyPage extends StatelessWidget {
     );
   }
 
+  Widget _discoverPeople() {
+    return Column(
+      children: [
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Discover People',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                  color: Colors.black,
+                ),
+              ),
+              Text(
+                'See All',
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
+                  color: Colors.blue,
+                ),
+              ),
+            ],
+          ),
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            child: Row(
+              children: List.generate(
+                10,
+                (index) => UserCard(
+                  userId: 'ghdtjq$index',
+                  description: 'ghdtjq$index님이 팔로우합니다.',
+                ),
+              ).toList(),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -167,6 +214,7 @@ class MyPage extends StatelessWidget {
           children: [
             _information(),
             _menu(),
+            _discoverPeople(),
           ],
         ),
       ),
