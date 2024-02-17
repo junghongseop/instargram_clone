@@ -206,6 +206,26 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
     );
   }
 
+  Widget _tabView() {
+    return GridView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: 100,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        childAspectRatio: 1,
+        mainAxisSpacing: 1,
+        crossAxisSpacing: 1,
+      ),
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          color: Colors.grey,
+        );
+      },
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -251,7 +271,7 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
               height: 16,
             ),
             _tabMenu(),
-            _tabVier(),
+            _tabView(),
           ],
         ),
       ),
