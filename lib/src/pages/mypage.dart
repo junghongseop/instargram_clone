@@ -3,8 +3,21 @@ import 'package:instargram/src/components/avatar_widget.dart';
 import 'package:instargram/src/components/image_data.dart';
 import 'package:instargram/src/components/user_card.dart';
 
-class MyPage extends StatelessWidget {
+class MyPage extends StatefulWidget {
   const MyPage({Key? key}) : super(key: key);
+
+  @override
+  _MyPageState createState() => _MyPageState();
+}
+
+class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
+  late TabController tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    tabController = TabController(length: 2, vsync: this);
+  }
 
   Widget _statisticsOne(String title, int value) {
     return Column(
@@ -174,6 +187,25 @@ class MyPage extends StatelessWidget {
     );
   }
 
+  Widget _tabMenu() {
+    return TabBar(
+      controller: tabController,
+      indicatorColor: Colors.black,
+      indicatorWeight: 2,
+      indicatorSize: TabBarIndicatorSize.tab,
+      tabs: [
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 10.0),
+          child: ImageData(IconsPath.gridViewOn),
+        ),
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 10.0),
+          child: ImageData(IconsPath.myTagImageOff),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -215,6 +247,11 @@ class MyPage extends StatelessWidget {
             _information(),
             _menu(),
             _discoverPeople(),
+            const SizedBox(
+              height: 16,
+            ),
+            _tabMenu(),
+            _tabVier(),
           ],
         ),
       ),
