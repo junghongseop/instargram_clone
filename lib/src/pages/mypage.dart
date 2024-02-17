@@ -84,7 +84,47 @@ class MyPage extends StatelessWidget {
   }
 
   Widget _menu() {
-    return
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(3),
+                border: Border.all(
+                  color: const Color(0xffdedede),
+                ),
+              ),
+              child: const Text(
+                'Edit profile',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 8,
+          ),
+          Container(
+            padding: const EdgeInsets.all(4.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(3),
+              border: Border.all(
+                color: const Color(0xffdedede),
+              ),
+              color: const Color(0xffefefef),
+            ),
+            child: ImageData(IconsPath.addFriend),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
