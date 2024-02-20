@@ -1,13 +1,9 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:instargram/firebase_options.dart';
 import 'package:instargram/src/binding/init_bindings.dart';
-import 'package:instargram/src/root.dart';
+import 'package:instargram/src/pages/login.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+void main() {
   runApp(const MyApp());
 }
 
@@ -19,6 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
+      checkerboardOffscreenLayers: true,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         appBarTheme: const AppBarTheme(
@@ -27,7 +24,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       initialBinding: InitBinding(),
-      home: const Root(),
+      home: const Login(),
     );
   }
 }

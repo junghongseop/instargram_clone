@@ -1,26 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../api/google_signin_api.dart';
 
 class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
-
-  Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
-
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-  }
+  const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,33 +12,50 @@ class Login extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Colors.white,
         title: const Text(
           'Login',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 20,
             fontWeight: FontWeight.bold,
+            fontSize: 22,
           ),
         ),
       ),
       body: Center(
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.white,
-            fixedSize: const Size(280, 40),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width - 40,
+          child: ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              elevation: 1.0,
+              backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+              surfaceTintColor: const Color.fromARGB(255, 255, 255, 255),
+              minimumSize: const Size(
+                double.infinity,
+                50,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
-            elevation: 2,
-          ),
-          onPressed: signInWithGoogle,
-          child: const Text(
-            '구글 로그인',
-            style: TextStyle(color: Colors.black),
+            onPressed: logIn,
+            icon: const FaIcon(
+              FontAwesomeIcons.google,
+              color: Colors.black,
+            ),
+            label: const Text(
+              'LogIn with Google',
+              style: TextStyle(
+                color: Colors.black,
+              ),
+            ),
           ),
         ),
       ),
     );
   }
+
+  Future logIn() async {
+    await GoogleSignInApi.login();
+  }
+
 }
