@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "soldout" "\0"
+            VALUE "FileDescription", "instargram" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "soldout" "\0"
+            VALUE "InternalName", "instargram" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "soldout.exe" "\0"
-            VALUE "ProductName", "soldout" "\0"
+            VALUE "OriginalFilename", "instargram.exe" "\0"
+            VALUE "ProductName", "instargram" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
