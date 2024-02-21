@@ -1,9 +1,8 @@
 # This is a generated file; do not edit or check into version control.
-cloud_firestore_web=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/cloud_firestore_web-2.8.10/
-firebase_auth=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/firebase_auth-3.11.2/
-firebase_auth_web=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/firebase_auth_web-4.6.1/
-firebase_core=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/firebase_core-1.24.0/
-firebase_core_web=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/firebase_core_web-1.7.3/
+firebase_auth=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/firebase_auth-4.17.5/
+firebase_auth_web=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/firebase_auth_web-5.9.5/
+firebase_core=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/firebase_core-2.25.4/
+firebase_core_web=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/firebase_core_web-2.11.4/
 google_sign_in=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/google_sign_in-5.4.4/
 google_sign_in_android=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/google_sign_in_android-6.1.21/
 google_sign_in_ios=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/google_sign_in_ios-5.7.4/
