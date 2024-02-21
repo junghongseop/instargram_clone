@@ -11,7 +11,7 @@ class ActiveHistory extends StatelessWidget {
         children: [
           AvatarWidget(
             thumbPath:
-                'https://mblogthumb-phinf.pstatic.net/MjAyMTEwMzFfMjAg/MDAxNjM1NjcxOTM5MjQ3.ExDvbIFsR7qKQSKyvS35HxtYN7aDJHUJVp6qn-OfjxUg._9xJV0TsywPh01Ee1p_1_frvUu2eEbIGbkfAutKqnTcg.JPEG.sosohan_n/IMG_5825.JPG?type=w800',
+            'https://mblogthumb-phinf.pstatic.net/MjAyMTEwMzFfMjAg/MDAxNjM1NjcxOTM5MjQ3.ExDvbIFsR7qKQSKyvS35HxtYN7aDJHUJVp6qn-OfjxUg._9xJV0TsywPh01Ee1p_1_frvUu2eEbIGbkfAutKqnTcg.JPEG.sosohan_n/IMG_5825.JPG?type=w800',
             type: AvatarType.TYPE2,
             size: 40,
           ),
@@ -35,8 +35,8 @@ class ActiveHistory extends StatelessWidget {
                   TextSpan(
                     text: ' 5시간',
                     style: TextStyle(
-                      fontWeight: FontWeight.normal,
-                      color: Colors.black45
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black45
                     ),
                   ),
                 ],

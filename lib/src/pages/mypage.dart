@@ -51,7 +51,7 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
             children: [
               AvatarWidget(
                 thumbPath:
-                    'https://pzip.kr/wp-content/uploads/2023/09/image-76.png',
+                'https://pzip.kr/wp-content/uploads/2023/09/image-76.png',
                 type: AvatarType.TYPE2,
                 size: 100,
               ),
@@ -175,7 +175,7 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
             child: Row(
               children: List.generate(
                 10,
-                (index) => UserCard(
+                    (index) => UserCard(
                   userId: 'ghdtjq$index',
                   description: 'ghdtjq$index님이 팔로우합니다.',
                 ),

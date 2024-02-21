@@ -74,15 +74,15 @@ class _UploadState extends State<Upload> {
       child: selectedImage == null
           ? Container()
           : _photoWidget(
-              selectedImage!,
-              width.toInt(),
-              builder: (data) {
-                return Image.memory(
-                  data,
-                  fit: BoxFit.cover,
-                );
-              },
-            ),
+        selectedImage!,
+        width.toInt(),
+        builder: (data) {
+          return Image.memory(
+            data,
+            fit: BoxFit.cover,
+          );
+        },
+      ),
     );
   }
 
@@ -128,7 +128,7 @@ class _UploadState extends State<Upload> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: List.generate(
                               albums.length,
-                              (index) => Container(
+                                  (index) => Container(
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 15, horizontal: 20),
                                 child: Text(albums[index].name),
@@ -162,7 +162,7 @@ class _UploadState extends State<Upload> {
             children: [
               Container(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 decoration: BoxDecoration(
                   color: const Color(0xff808080),
                   borderRadius: BorderRadius.circular(30),

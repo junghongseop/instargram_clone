@@ -34,7 +34,7 @@ class UserCard extends StatelessWidget {
                 ),
                 AvatarWidget(
                   thumbPath:
-                      'https://pzip.kr/wp-content/uploads/2023/09/image-76.png',
+                  'https://pzip.kr/wp-content/uploads/2023/09/image-76.png',
                   type: AvatarType.TYPE2,
                   size: 80,
                 ),

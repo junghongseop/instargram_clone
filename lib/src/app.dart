@@ -13,7 +13,7 @@ class App extends GetView<BottomNavController> {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => WillPopScope(
+          () => WillPopScope(
         onWillPop: controller.willPopAction,
         child: Scaffold(
           body: IndexedStack(

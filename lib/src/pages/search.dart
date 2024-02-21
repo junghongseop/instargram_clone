@@ -78,11 +78,11 @@ class _SearchState extends State<Search> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: List.generate(
           groupBox.length,
-          (index) => Expanded(
+              (index) => Expanded(
             child: Column(
               children: List.generate(
                 groupBox[index].length,
-                (jndex) => Container(
+                    (jndex) => Container(
                   height: Get.width * 0.33 * groupBox[index][jndex],
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.white),
@@ -91,7 +91,7 @@ class _SearchState extends State<Search> {
                   ),
                   child: CachedNetworkImage(
                     imageUrl:
-                        'https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg',
+                    'https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg',
                     fit: BoxFit.cover,
                   ),
                 ),

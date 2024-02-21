@@ -15,7 +15,7 @@ class PostWidget extends StatelessWidget {
         children: [
           AvatarWidget(
             thumbPath:
-                'https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg',
+            'https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg',
             type: AvatarType.TYPE3,
             nickname: 'wid_ghdtjq',
             size: 40,
@@ -38,7 +38,7 @@ class PostWidget extends StatelessWidget {
   Widget _image() {
     return CachedNetworkImage(
         imageUrl:
-            'https://t4.ftcdn.net/jpg/02/96/15/35/360_F_296153501_B34baBHDkFXbl5RmzxpiOumF4LHGCvAE.jpg');
+        'https://t4.ftcdn.net/jpg/02/96/15/35/360_F_296153501_B34baBHDkFXbl5RmzxpiOumF4LHGCvAE.jpg');
   }
 
   Widget _infoCount() {

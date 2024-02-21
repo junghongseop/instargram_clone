@@ -11,7 +11,7 @@ class Home extends StatelessWidget {
       children: [
         AvatarWidget(
           thumbPath:
-              'https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg',
+          'https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg',
           type: AvatarType.TYPE2,
           size: 70,
         ),
@@ -30,7 +30,7 @@ class Home extends StatelessWidget {
               child: Text(
                 '+',
                 style:
-                    TextStyle(color: Colors.white, fontSize: 20, height: 1.15),
+                TextStyle(color: Colors.white, fontSize: 20, height: 1.15),
               ),
             ),
           ),
@@ -48,9 +48,9 @@ class Home extends StatelessWidget {
         const SizedBox(width: 5),
         ...List.generate(
           100,
-          (index) => AvatarWidget(
+              (index) => AvatarWidget(
             thumbPath:
-                'https://moorepediatricnc.com/wp-content/uploads/2022/08/default_avatar.jpg',
+            'https://moorepediatricnc.com/wp-content/uploads/2022/08/default_avatar.jpg',
             type: AvatarType.TYPE1,
           ),
         ),
