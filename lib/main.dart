@@ -1,9 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:instargram/src/app.dart';
+import 'package:instargram/firebase_options.dart';
 import 'package:instargram/src/binding/init_binding.dart';
+import 'package:instargram/src/pages/login.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -19,11 +23,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
-          titleTextStyle: TextStyle(color: Colors.black),
+          titleTextStyle: TextStyle(
+            color: Colors.black,
+          ),
         ),
       ),
       initialBinding: InitBinding(),
-      home: const App(),
+      home: const Login(),
     );
   }
 }
