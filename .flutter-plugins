@@ -1,4 +1,6 @@
 # This is a generated file; do not edit or check into version control.
+cloud_firestore=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/cloud_firestore-4.15.5/
+cloud_firestore_web=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/cloud_firestore_web-3.10.5/
 firebase_auth=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/firebase_auth-4.17.5/
 firebase_auth_web=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/firebase_auth_web-5.9.5/
 firebase_core=/Users/wid_ghdtjq/.pub-cache/hosted/pub.dev/firebase_core-2.25.4/
