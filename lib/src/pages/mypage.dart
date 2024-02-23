@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:instargram/src/components/avatar_widget.dart';
 import 'package:instargram/src/components/image_data.dart';
 import 'package:instargram/src/components/user_card.dart';
+import 'package:instargram/src/pages/signup.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage({Key? key}) : super(key: key);
@@ -103,22 +105,27 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 4.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(3),
-                border: Border.all(
-                  color: const Color(0xffdedede),
+            child: GestureDetector(
+              onTap: () {
+                Get.to(() => const SignupPage(uid: '',));
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(3),
+                  border: Border.all(
+                    color: const Color(0xffdedede),
+                  ),
                 ),
-              ),
-              child: const Text(
-                'Edit profile',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
+                child: const Text(
+                  'Edit profile',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
           ),
