@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:instargram/src/components/avatar_widget.dart';
 import 'package:instargram/src/components/image_data.dart';
 import 'package:instargram/src/components/user_card.dart';
-import 'package:instargram/src/pages/signup.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage({super.key});
@@ -105,10 +103,6 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
       child: Row(
         children: [
           Expanded(
-            child: GestureDetector(
-              onTap: () {
-                Get.to(() => const SignupPage(uid: '',));
-              },
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 4.0),
                 decoration: BoxDecoration(
@@ -127,7 +121,6 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
                   textAlign: TextAlign.center,
                 ),
               ),
-            ),
           ),
           const SizedBox(
             width: 8,
