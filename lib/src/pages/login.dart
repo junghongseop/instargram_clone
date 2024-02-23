@@ -1,9 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:instargram/src/app.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -54,13 +52,7 @@ class Login extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            onPressed: () async {
-              UserCredential userCredential = await signInWithGoogle();
-              // 로그인 성공 후 GetX의 Navigator를 이용하여 App 화면으로 이동
-              if (userCredential.user != null) {
-                Get.off(() => const App());
-              }
-            },
+            onPressed: signInWithGoogle,
             child: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
           children: [
