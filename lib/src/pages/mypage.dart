@@ -6,7 +6,7 @@ import 'package:instargram/src/components/user_card.dart';
 import 'package:instargram/src/pages/signup.dart';
 
 class MyPage extends StatefulWidget {
-  const MyPage({Key? key}) : super(key: key);
+  const MyPage({super.key});
 
   @override
   _MyPageState createState() => _MyPageState();
