@@ -20,10 +20,14 @@ class Root extends GetView<AuthController> {
           return FutureBuilder<UserModel?>(
             future: controller.loginUser(user.data!.uid),
             builder: (context, snapshot) {
-              if(snapshot.hasData) {
+              if (snapshot.hasData) {
                 return const App();
               } else {
-                return const SignupPage();
+                return Obx(
+                  () => controller.user.value.uid != null
+                      ? const App()
+                      : SignupPage(uid: user.data!.uid),
+                );
               }
             },
           );

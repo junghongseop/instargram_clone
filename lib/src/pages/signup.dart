@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:instargram/src/app.dart';
 import 'package:instargram/src/controller/auth_controller.dart';
 import 'package:instargram/src/models/user_model.dart';
 
@@ -19,7 +21,7 @@ class _SignupPageState extends State<SignupPage> {
     return Column(
       children: [
         const SizedBox(
-          height: 5.0,
+          height: 50.0,
         ),
         ClipRRect(
           borderRadius: BorderRadius.circular(100),
@@ -69,7 +71,7 @@ class _SignupPageState extends State<SignupPage> {
     return Padding(
       padding: const EdgeInsets.only(left: 25.0, right: 25.0),
       child: TextField(
-        controller: nicknameController,
+        controller: descriptionController,
         decoration: const InputDecoration(
           contentPadding: EdgeInsets.all(10),
           hintText: 'description',
@@ -87,7 +89,7 @@ class _SignupPageState extends State<SignupPage> {
         elevation: 0.0,
         backgroundColor: Colors.white,
         title: const Text(
-          '완료',
+          'Profile',
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -100,7 +102,13 @@ class _SignupPageState extends State<SignupPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             _avatar(),
+            const SizedBox(
+              height: 50,
+            ),
             _nickname(),
+            const SizedBox(
+              height: 50,
+            ),
             _description(),
           ],
         ),
@@ -111,17 +119,23 @@ class _SignupPageState extends State<SignupPage> {
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.blue,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(0),
+              borderRadius: BorderRadius.circular(5.0),
             ),
           ),
           onPressed: () {
-            var signupUser = UserModel(
-              uid: widget.uid,
-              nickname: nicknameController.text,
-              description: descriptionController.text,
-            );
-            AuthController.to.signup(signupUser);
+            if (nicknameController.text.isEmpty && descriptionController.text.isEmpty) {
+              print('nickname or description is empty');
+            } else {
+              var signupUser = UserModel(
+                uid: widget.uid,
+                nickname: nicknameController.text,
+                description: descriptionController.text,
+              );
+              AuthController.to.signup(signupUser);
+              Get.to(() => const App());
+            }
           },
+
           child: const Text(
             'Change',
             style: TextStyle(
