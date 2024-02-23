@@ -123,19 +123,13 @@ class _SignupPageState extends State<SignupPage> {
             ),
           ),
           onPressed: () {
-            if (nicknameController.text.isEmpty && descriptionController.text.isEmpty) {
-              print('nickname or description is empty');
-            } else {
-              var signupUser = UserModel(
-                uid: widget.uid,
-                nickname: nicknameController.text,
-                description: descriptionController.text,
-              );
-              AuthController.to.signup(signupUser);
-              Get.to(() => const App());
-            }
+            var signupUser = UserModel(
+              uid: widget.uid,
+              nickname: nicknameController.text,
+              description: descriptionController.text,
+            );
+            AuthController.to.signup(signupUser);
           },
-
           child: const Text(
             'Change',
             style: TextStyle(

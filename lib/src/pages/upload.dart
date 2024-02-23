@@ -6,7 +6,7 @@ import 'package:instargram/src/components/image_data.dart';
 import 'package:photo_manager/photo_manager.dart';
 
 class Upload extends StatefulWidget {
-  const Upload({Key? key}) : super(key: key);
+  const Upload({super.key});
 
   @override
   State<Upload> createState() => _UploadState();
