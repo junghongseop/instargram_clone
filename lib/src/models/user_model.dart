@@ -28,4 +28,18 @@ class UserModel {
       'description': description
     };
   }
+
+  UserModel copyWith({
+    String? uid,
+    String? nickname,
+    String? description,
+    String? thumbnail,
+}) {
+    return UserModel(
+      uid: uid ?? this.uid,
+      nickname: uid ?? this.nickname,
+      thumbnail: uid ?? this.thumbnail,
+      description: uid ?? this.description,
+    );
+  }
 }

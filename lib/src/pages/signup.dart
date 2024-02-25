@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instargram/src/controller/auth_controller.dart';
@@ -16,6 +18,9 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController nicknameController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   final ImagePicker _picker = ImagePicker();
+  XFile? thumbnailXFile;
+
+  void update() => setState(() {});
 
   Widget _avatar() {
     return Column(
@@ -28,10 +33,15 @@ class _SignupPageState extends State<SignupPage> {
           child: SizedBox(
             width: 100,
             height: 100,
-            child: Image.asset(
-              'assets/default_image.png',
-              fit: BoxFit.cover,
-            ),
+            child: thumbnailXFile != null
+                ? Image.file(
+                    File(thumbnailXFile!.path),
+                    fit: BoxFit.cover,
+                  )
+                : Image.asset(
+                    'assets/default_image.png',
+                    fit: BoxFit.cover,
+                  ),
           ),
         ),
         ElevatedButton(
@@ -43,7 +53,9 @@ class _SignupPageState extends State<SignupPage> {
             ),
           ),
           onPressed: () async {
-            await _picker.pickImage(source: ImageSource.gallery, imageQuality: 10);
+            thumbnailXFile = await _picker.pickImage(
+                source: ImageSource.gallery, imageQuality: 100);
+            update();
           },
           child: const Text(
             'change image',
@@ -130,7 +142,7 @@ class _SignupPageState extends State<SignupPage> {
               nickname: nicknameController.text,
               description: descriptionController.text,
             );
-            AuthController.to.signup(signupUser);
+            AuthController.to.signup(signupUser, thumbnailXFile);
           },
           child: const Text(
             'Sign up',
