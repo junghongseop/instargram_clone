@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:instargram/src/controller/auth_controller.dart';
 import 'package:instargram/src/models/user_model.dart';
 
@@ -14,6 +15,7 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   TextEditingController nicknameController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+  final ImagePicker _picker = ImagePicker();
 
   Widget _avatar() {
     return Column(
@@ -40,7 +42,9 @@ class _SignupPageState extends State<SignupPage> {
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          onPressed: () {},
+          onPressed: () async {
+            await _picker.pickImage(source: ImageSource.gallery, imageQuality: 10);
+          },
           child: const Text(
             'change image',
             style: TextStyle(
