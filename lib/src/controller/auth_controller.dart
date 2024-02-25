@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:instargram/src/binding/init_binding.dart';
 import 'package:instargram/src/models/user_model.dart';
 import 'package:instargram/src/repository/user_repository.dart';
 
@@ -14,6 +15,10 @@ class AuthController extends GetxController {
   Future<UserModel?> loginUser(String uid) async {
     // DB 조회
     var userData = await UserRepository.loginUserByUid(uid);
+    if (userData != null) {
+      InitBinding.additionalBinding();
+      user(userData);
+    }
     return userData;
   }
 
@@ -50,7 +55,7 @@ class AuthController extends GetxController {
   void _submitSignup(UserModel signupUser) async {
     var result = await UserRepository.signup(signupUser);
     if (result) {
-      user(signupUser);
+      loginUser(signupUser.uid!);
     }
   }
 }
