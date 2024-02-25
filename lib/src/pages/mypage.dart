@@ -1,23 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:instargram/src/components/avatar_widget.dart';
 import 'package:instargram/src/components/image_data.dart';
 import 'package:instargram/src/components/user_card.dart';
+import 'package:instargram/src/controller/mypage_controller.dart';
 
-class MyPage extends StatefulWidget {
+class MyPage extends GetView<MypageController> {
   const MyPage({super.key});
-
-  @override
-  _MyPageState createState() => _MyPageState();
-}
-
-class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
-  late TabController tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    tabController = TabController(length: 2, vsync: this);
-  }
 
   Widget _statisticsOne(String title, int value) {
     return Column(
@@ -44,55 +33,56 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
   Widget _information() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 14.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Row(
-            children: [
-              AvatarWidget(
-                thumbPath:
-                'https://pzip.kr/wp-content/uploads/2023/09/image-76.png',
-                type: AvatarType.TYPE2,
-                size: 100,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: _statisticsOne('게시물', 12),
-                    ),
-                    Expanded(
-                      child: _statisticsOne('팔로워', 264),
-                    ),
-                    Expanded(
-                      child: _statisticsOne('팔로우', 261),
-                    ),
-                  ],
+      child: Obx(
+        () => Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              children: [
+                AvatarWidget(
+                  thumbPath: controller.targetUser.value.thumbnail!,
+                  type: AvatarType.TYPE2,
+                  size: 100,
                 ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: _statisticsOne('게시물', 12),
+                      ),
+                      Expanded(
+                        child: _statisticsOne('팔로워', 264),
+                      ),
+                      Expanded(
+                        child: _statisticsOne('팔로우', 261),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              controller.targetUser.value.nickname!,
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.black,
               ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text(
-            '정홍섭',
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.black,
             ),
-          ),
-          const Text(
-            'bssm 3기',
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.black,
+            Text(
+              controller.targetUser.value.description!,
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -103,24 +93,24 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
       child: Row(
         children: [
           Expanded(
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(3),
-                  border: Border.all(
-                    color: const Color(0xffdedede),
-                  ),
-                ),
-                child: const Text(
-                  'Edit profile',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(3),
+                border: Border.all(
+                  color: const Color(0xffdedede),
                 ),
               ),
+              child: const Text(
+                'Edit profile',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
           ),
           const SizedBox(
             width: 8,
@@ -175,7 +165,7 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
             child: Row(
               children: List.generate(
                 10,
-                    (index) => UserCard(
+                (index) => UserCard(
                   userId: 'ghdtjq$index',
                   description: 'ghdtjq$index님이 팔로우합니다.',
                 ),
@@ -189,7 +179,7 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
 
   Widget _tabMenu() {
     return TabBar(
-      controller: tabController,
+      controller: controller.tabController,
       indicatorColor: Colors.black,
       indicatorWeight: 2,
       indicatorSize: TabBarIndicatorSize.tab,
@@ -225,7 +215,6 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -233,12 +222,14 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
       appBar: AppBar(
         centerTitle: false,
         elevation: 0,
-        title: const Text(
-          'wid_ghdtjq',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-            color: Colors.black,
+        title: Obx(
+          () => Text(
+            controller.targetUser.value.nickname!,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+              color: Colors.black,
+            ),
           ),
         ),
         actions: [
