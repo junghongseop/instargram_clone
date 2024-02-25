@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instargram/firebase_options.dart';
 import 'package:instargram/src/binding/init_binding.dart';
-import 'package:instargram/src/pages/login.dart';
+import 'package:instargram/src/root.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       initialBinding: InitBinding(),
-      home: const Login(),
+      home: const Root(),
     );
   }
 }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:instargram/src/app.dart';
 import 'package:instargram/src/controller/auth_controller.dart';
 import 'package:instargram/src/models/user_model.dart';
 
@@ -131,7 +129,7 @@ class _SignupPageState extends State<SignupPage> {
             AuthController.to.signup(signupUser);
           },
           child: const Text(
-            'Change',
+            'Sign up',
             style: TextStyle(
               color: Colors.white,
             ),
