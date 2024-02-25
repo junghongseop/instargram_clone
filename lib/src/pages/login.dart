@@ -12,7 +12,7 @@ class Login extends StatelessWidget {
 
     // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth =
-    await googleUser?.authentication;
+        await googleUser?.authentication;
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
@@ -54,27 +54,27 @@ class Login extends StatelessWidget {
             ),
             onPressed: signInWithGoogle,
             child: const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-          FaIcon(
-          FontAwesomeIcons.google,
-            color: Colors.black,
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          Text(
-            'Login in Google',
-            style: TextStyle(
-              color: Colors.black,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FaIcon(
+                  FontAwesomeIcons.google,
+                  color: Colors.black,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'Login in Google',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+              ],
             ),
           ),
-          ],
         ),
       ),
-    ),
-    ),
-    backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
     );
   }
 }
