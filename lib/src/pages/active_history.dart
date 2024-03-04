@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:instargram/src/components/avatar_widget.dart';
 
 class ActiveHistory extends StatelessWidget {
-  const ActiveHistory({Key? key}) : super(key: key);
+  const ActiveHistory({super.key});
 
   Widget _activeItemOne() {
     return Padding(

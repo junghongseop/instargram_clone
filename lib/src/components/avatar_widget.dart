@@ -12,13 +12,13 @@ class AvatarWidget extends StatelessWidget {
   double? size;
 
   AvatarWidget({
-    Key? key,
+    super.key,
     this.hasStory,
     required this.thumbPath,
     this.nickname,
     required this.type,
     this.size = 65,
-  }) : super(key: key);
+  });
 
   Widget type1Widget() {
     return Container(

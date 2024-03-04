@@ -3,7 +3,7 @@ import 'package:instargram/src/components/image_data.dart';
 import 'package:instargram/src/controller/bottom_nav_controller.dart';
 
 class SearchFocus extends StatefulWidget {
-  const SearchFocus({Key? key}) : super(key: key);
+  const SearchFocus({super.key});
 
   @override
   State<SearchFocus> createState() => _SearchFocusState();

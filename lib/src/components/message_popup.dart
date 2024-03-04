@@ -8,12 +8,12 @@ class MessagePopup extends StatelessWidget {
   final Function? cancelCallback;
 
   const MessagePopup({
-    Key? key,
+    super.key,
     required this.title,
     required this.message,
     required this.okCallback,
     this.cancelCallback,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

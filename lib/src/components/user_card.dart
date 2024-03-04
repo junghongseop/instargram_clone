@@ -5,8 +5,7 @@ class UserCard extends StatelessWidget {
   final String userId;
   final String description;
 
-  const UserCard({Key? key, required this.userId, required this.description})
-      : super(key: key);
+  const UserCard({super.key, required this.userId, required this.description});
 
   @override
   Widget build(BuildContext context) {

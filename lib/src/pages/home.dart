@@ -4,7 +4,7 @@ import 'package:instargram/src/components/image_data.dart';
 import 'package:instargram/src/components/post_widget.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   Widget _myStory() {
     return Stack(
