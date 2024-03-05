@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instargram/src/components/message_popup.dart';
+import 'package:instargram/src/controller/upload_controller.dart';
 import 'package:instargram/src/pages/upload.dart';
 
 // ignore: constant_identifier_names
@@ -17,7 +18,9 @@ class BottomNavController extends GetxController {
     var page = PageName.values[value];
     switch (page) {
       case PageName.UPLOAD:
-        Get.to(() => const Upload());
+        Get.to(() => const Upload(), binding: BindingsBuilder(() {
+          Get.put(UploadController());
+        }));
         break;
       case PageName.HOME:
       case PageName.SEARCH:
