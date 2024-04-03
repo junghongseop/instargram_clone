@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:instargram/src/app.dart';
 import 'package:instargram/src/controller/auth_controller.dart';
 import 'package:instargram/src/models/user_model.dart';
 
@@ -143,6 +144,11 @@ class _SignupPageState extends State<SignupPage> {
               description: descriptionController.text,
             );
             AuthController.to.signup(signupUser, thumbnailXFile);
+
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => App()),
+            );
           },
           child: const Text(
             'Sign up',

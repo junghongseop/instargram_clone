@@ -4,7 +4,7 @@ import 'package:photo_manager/photo_manager.dart';
 class UploadController extends GetxController {
 
   RxList<AssetPathEntity> albums = <AssetPathEntity>[].obs;
-  var headerTitle = '';
+  RxString headerTitle = ''.obs;
   var imageList = <AssetEntity>[];
   Rx<AssetEntity> selectedImage = AssetEntity(
     id: '0',
@@ -47,7 +47,7 @@ class UploadController extends GetxController {
   }
 
   void _loadData() async {
-    headerTitle = albums.first.name;
+    headerTitle(albums.first.name);
     await _pagingPhotos();
     // update();
   }

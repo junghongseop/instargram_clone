@@ -17,15 +17,15 @@ class Upload extends GetView<UploadController> {
         height: width,
         color: Colors.grey,
         child: _photoWidget(
-                controller.selectedImage.value,
-                width.toInt(),
-                builder: (data) {
-                  return Image.memory(
-                    data,
-                    fit: BoxFit.cover,
-                  );
-                },
-              ),
+          controller.selectedImage.value,
+          width.toInt(),
+          builder: (data) {
+            return Image.memory(
+              data,
+              fit: BoxFit.cover,
+            );
+          },
+        ),
       ),
     );
   }
@@ -91,11 +91,13 @@ class Upload extends GetView<UploadController> {
               padding: const EdgeInsets.all(5.0),
               child: Row(
                 children: [
-                  Text(
-                    controller.headerTitle,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
+                  Obx(
+                    () => Text(
+                      controller.headerTitle.value,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
                     ),
                   ),
                   const Icon(Icons.arrow_drop_down),
